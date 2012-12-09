@@ -76,11 +76,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoardConfig.cpp" />
+    <ClCompile Include="CKPlayer.cpp" />
+    <ClCompile Include="GravityImpl.cpp" />
+    <ClCompile Include="BoardState.cpp" />
     <ClCompile Include="CAdapter.cpp" />
+    <ClCompile Include="NoGravityImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cell.h" />
+    <ClInclude Include="GravityImpl.h" />
+    <ClInclude Include="InvalidPlayerException.h" />
+    <ClInclude Include="NoGravityImpl.h" />
+    <ClInclude Include="BoardConfig.h" />
+    <ClInclude Include="BoardState.h" />
     <ClInclude Include="CKPlayer.h" />
+    <ClInclude Include="Mark.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Mark.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

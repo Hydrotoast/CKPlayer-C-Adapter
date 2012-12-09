@@ -5,25 +5,30 @@
 #define CADAPTER_API __declspec(dllimport)
 #endif
 
-#include "Cell.h"
 #include "CKPlayer.h"
-
-enum Mark {
-	A, B, BLANK
-};
 
 class ConnectK : public CKPlayer {
 public:
-	ConnectK();
+	ConnectK(int player, int M, int N, int K, bool G) :
+		CKPlayer(player, BoardState(constructBoardConfig(M, N, K, G)))
+	{}
+
+	Cell getMove(unsigned int deadline = 0) {
+		return board.getAvailable().front();
+	}
 };
 
 extern "C" {
-	CADAPTER_API CKPlayer* createAI() {
-		return new ConnectK();
+	CADAPTER_API CKPlayer* createAI(int player, int M, int N, int K, bool G) {
+		return new ConnectK(player, M, N, K, G);
+	}
+
+	CADAPTER_API void destroyAI(CKPlayer* player) {
+		delete player;
 	}
 
 	CADAPTER_API Cell getMove(CKPlayer* player, unsigned int deadline = 0) {
-		player->getMove(deadline);
+		return player->getMove(deadline);
 	}
 
 	CADAPTER_API void updateBoard(CKPlayer* player, Cell cell, Mark m) {

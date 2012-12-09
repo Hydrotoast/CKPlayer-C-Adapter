@@ -5,6 +5,7 @@ import com.sun.jna.Library;
 
 public interface CKPlayerLibAdapter extends Library {
 	Pointer createAI();
+	void destroyAI(Pointer aiPointer);
 	Cell getMove(Pointer aiPointer,BoardModel state);
 	void updateBoard(Pointer aiPointer, Cell cell, Mark m);
 }

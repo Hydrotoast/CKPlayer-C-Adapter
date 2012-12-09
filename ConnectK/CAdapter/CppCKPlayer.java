@@ -16,6 +16,12 @@ public class CppCKPlayer extends CKPlayer {
 		aiPointer = AILibrary.createAI();
 	}
 	
+	// Cleans up resources
+	public void dipose() {
+		AILibrary.destroyAI(aiPointer);
+		aiPointer = Pointer.NULL;
+	}
+	
 	public void updateBoard(Cell cell, Mark m) {
 		AILibrary.updateBoard(aiPointer, cell, m);
 	}
