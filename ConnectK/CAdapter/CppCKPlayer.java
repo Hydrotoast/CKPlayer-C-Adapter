@@ -13,7 +13,11 @@ public class CppCKPlayer extends CKPlayer {
 		super(player, state);
 		AILibrary = (CKPlayerLibAdapter) 
 			Native.loadLibrary(lib, CKPlayerLibAdapter.class);
-		aiPointer = AILibrary.createAI();
+		aiPointer = AILibrary.createAI(
+				player, 
+				state.width, state.height, 
+				state.kLength, 
+				state.gravity);
 	}
 	
 	// Cleans up resources
